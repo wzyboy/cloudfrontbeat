@@ -1,7 +1,7 @@
 package workers
 
 import (
-	"github.com/elastic/beats/libbeat/publisher"
+	"github.com/elastic/beats/libbeat/beat"
 	"github.com/elastic/beats/libbeat/common"
 	"time"
 	"reflect"
@@ -9,12 +9,12 @@ import (
 
 // CfPublisher is an easy way to publish events
 type CfPublisher struct {
-	client publisher.Client
+	client beat.Client
 	event  *common.MapStr
 }
 
 // NewCfPublisher is a construct function
-func NewCfPublisher(client publisher.Client) *CfPublisher {
+func NewCfPublisher(client beat.Client) *CfPublisher {
 	return &CfPublisher{
 		client: client,
 	}

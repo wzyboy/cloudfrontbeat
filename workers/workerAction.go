@@ -2,7 +2,7 @@ package workers
 
 import (
 	"github.com/elastic/beats/libbeat/logp"
-	"github.com/elastic/beats/libbeat/publisher"
+	"github.com/elastic/beats/libbeat/beat"
 
 	"github.com/jarl-tornroos/cloudfrontbeat/awsfacade"
 	"github.com/jarl-tornroos/cloudfrontbeat/cflib"
@@ -14,7 +14,7 @@ type WorkerAction struct {
 	done       bool
 	ch         chan WorkerResponse
 	Config     *config.Config
-	Client     publisher.Client
+	Client     beat.Client
 	Sqs        *awsfacade.SqsFacade
 	S3         *awsfacade.S3Facade
 	Stopper    *cflib.StopPublisher
