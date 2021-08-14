@@ -316,7 +316,6 @@ func createEventBulkMeta(
 	if pipeline == "" {
 		type bulkMetaIndex struct {
 			Index   string `json:"_index"`
-			DocType string `json:"_type"`
 		}
 		type bulkMeta struct {
 			Index bulkMetaIndex `json:"index"`
@@ -325,14 +324,12 @@ func createEventBulkMeta(
 		return bulkMeta{
 			Index: bulkMetaIndex{
 				Index:   getIndex(event, index),
-				DocType: eventType,
 			},
 		}
 	}
 
 	type bulkMetaIndex struct {
 		Index    string `json:"_index"`
-		DocType  string `json:"_type"`
 		Pipeline string `json:"pipeline"`
 	}
 	type bulkMeta struct {
@@ -343,7 +340,6 @@ func createEventBulkMeta(
 		Index: bulkMetaIndex{
 			Index:    getIndex(event, index),
 			Pipeline: pipeline,
-			DocType:  eventType,
 		},
 	}
 }
